@@ -1,4 +1,4 @@
-let Replica = ../package.dhall
+let Replica = https://raw.githubusercontent.com/ReplicaTest/replica-dhall/main/package.dhall
 let Prelude = Replica.Prelude
 let Test = Replica.Test
 let Expectation = Replica.Expectation
