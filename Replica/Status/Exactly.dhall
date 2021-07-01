@@ -1,2 +1,2 @@
 let Status = ./Type.dhall
-in \(exitCode : Natural) -> Status.Exactly exitCode
+in \(exitCode : Natural) -> Some (Status.Exactly exitCode)

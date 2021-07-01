@@ -1,4 +1,4 @@
 let Status = ../Status/package.dhall
 in { Type = ./Type.dhall
-   , default = ./default.dhall // {status = Some Status.Failure}
+   , default = ./default.dhall // {status = Status.Failure}
    }
