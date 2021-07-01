@@ -1,2 +1,2 @@
 let Status = ./Type.dhall
-in Status.Succeed False
+in Status.Succeed True
