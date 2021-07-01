@@ -1,2 +1,1 @@
-let Expectation = ./Type.dhall
-in Expectation.Generated True
+./default.dhall // {generated = True}
