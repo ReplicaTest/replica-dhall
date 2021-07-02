@@ -1,4 +1,10 @@
 let Test = ../../Test/package.dhall
+let Expectation = ../../Expectation/package.dhall
 let Command/show = ../show.dhall
-in \(ipkg : Text) -> Test.Success ::
-  { command = Command/show (./default.dhall // {parameters = ["--typecheck ${ipkg}"]}) }
+let Typecheck : Text -> Test.Type
+  =  \(ipkg : Text) -> Test.Success ::
+  { command = Command/show (./default.dhall // {parameters = ["--typecheck ${ipkg}"]})
+  , stdOut = Expectation.Ignored
+  }
+
+in Typecheck
