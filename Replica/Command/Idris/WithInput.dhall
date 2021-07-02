@@ -1,4 +1,4 @@
-let Context = ./Context.idr
+let Context = ./Context.dhall
 let Command/show = ../show.dhall
 let Prelude = ../../../Prelude.dhall
 let concatSep = Prelude.Text.concatSep
