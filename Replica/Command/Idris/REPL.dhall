@@ -19,8 +19,8 @@ let toOption : Context -> List Text
 let defaultDependencies : List Text
   = ["--no-banner"]
 
-in \(ctx : Context) -> \(input : List Text) -> Test ::
+let REPL : Context -> Test
+  = \(ctx : Context) -> Test ::
   { command = Command/show (./default.dhall // {parameters = defaultDependencies # toOption ctx})
-  , input = Some (concatSep "\n" (input # [":q"]))
   , afterTest = ["rm -rf build"]
   }
