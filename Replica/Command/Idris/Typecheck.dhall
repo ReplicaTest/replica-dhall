@@ -5,6 +5,7 @@ let Typecheck : Text -> Test.Type
   =  \(ipkg : Text) -> Test.Success ::
   { command = Command/show (./default.dhall // {parameters = ["--typecheck ${ipkg}"]})
   , stdOut = Expectation.Ignored
+  , afterTest = ["rm -rf build"]
   }
 
 in Typecheck
