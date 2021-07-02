@@ -29,7 +29,11 @@ let defaultDependencies : List Text
 let REPL : Context -> Test.Type
   = \(ctx : Context) -> Test ::
   { command = Command/show (./default.dhall // {parameters = defaultDependencies # toOption ctx})
-  , afterTest = ["rm -rf build"]
+  , afterTest = merge
+    { Raw = \(dependencies : List Text) -> [] : List Text
+    , File = \(ctx : {dependencies : List Text, name : Text}) -> ["rm -rf build"]
+    , Package = \(name : Text) -> ["rm -rf build"]
+    } ctx
   }
 
 in REPL
