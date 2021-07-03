@@ -1,1 +1,1 @@
-\(consecutive : List Text) -> ./default.dhall // {consecutive}
+(\(consecutive : List Text) -> ./default.dhall // {consecutive}) : List Text -> ./Type.dhall

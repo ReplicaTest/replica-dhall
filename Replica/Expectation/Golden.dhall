@@ -1,1 +1,1 @@
-./default.dhall // {generated = True}
+(./default.dhall // {generated = True}) : ./Type.dhall
