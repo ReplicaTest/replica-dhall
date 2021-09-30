@@ -7,7 +7,7 @@ let fold = Prelude.Optional.fold
 let Test = ../../Test/package.dhall
 
 let packages : List Text -> Text
-  = \(dependencies : List Text) -> "-p " ++ concatSep "-p " dependencies
+  = \(dependencies : List Text) -> "-p " ++ concatSep " -p " dependencies
 
 let toOption : Context -> List Text
   = \(ctx : Context) ->
