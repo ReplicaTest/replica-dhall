@@ -3,11 +3,17 @@ let Command/show = ../show.dhall
 let Prelude = ../../../Prelude.dhall
 let concatSep = Prelude.Text.concatSep
 let head = Prelude.List.head
-let fold = Prelude.Optional.fold
+let fold = Prelude.List.fold
 let Test = ../../Test/package.dhall
 
 let packages : List Text -> Text
-  = \(dependencies : List Text) -> "-p " ++ concatSep " -p " dependencies
+  = \(dependencies : List Text) ->
+    fold
+      Text
+      dependencies
+      Text
+      (\(x : Text) -> \(xs : Text) -> "-p " ++ x ++ " " ++ xs)
+      ""
 
 let toOption : Context -> List Text
   = \(ctx : Context) ->
