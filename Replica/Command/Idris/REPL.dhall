@@ -12,7 +12,7 @@ let packages : List Text -> Text
       Text
       (head Text dependencies)
       Text
-      (\(h : Text) -> "-p" ++ concatSep " " dependencies)
+      (\(h : Text) -> "-p " ++ concatSep " " dependencies)
       ""
 
 let toOption : Context -> List Text
