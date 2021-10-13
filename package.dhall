@@ -5,7 +5,7 @@
   [REPLica tests](https://github.com/ReplicaTest/Replica)
 
   Aside the `Replica part`, the package re-export the `Prelude`
-  version it used.
+  version it uses.
 
   Here is an example of a Replica test file in dhall:
 

@@ -29,6 +29,7 @@ let Status = ../Status/Type.dhall
 in { description : Optional Text
    , require : List Text
    , workingDir : Optional Text
+   , suite : Optional Text
    , tags : List Text
    , beforeTest : List Text
    , afterTest : List Text

@@ -14,6 +14,7 @@ let default
   = { description = None Text
     , require = [] : List Text
     , workingDir = None Text
+    , suite = None Text
     , tags = [] : List Text
     , beforeTest = [] : List Text
     , afterTest = [] : List Text

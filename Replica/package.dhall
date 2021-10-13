@@ -11,6 +11,7 @@
   -}
 { Type = ./Type.dhall
 , Test = ./Test/package.dhall
+, Suite = ./Suite.dhall
 , Expectation = ./Expectation/package.dhall
 , Status = ./Status/package.dhall
 , Command = ./Command/package.dhall
