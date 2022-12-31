@@ -1,0 +1,4 @@
+[submodule "submodules/replica-dhall"]
+	path = submodules/replica-dhall
+	url = https://github.com/ReplicaTest/replica-dhall
+  branch = v20.2.0

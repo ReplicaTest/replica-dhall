@@ -7,10 +7,27 @@
     let
       npkgs = import nixpkgs { inherit system; };
       inherit (npkgs) dhall;
-      inherit (npkgs.haskellPackages) dhall-json;
+      inherit (npkgs) dhall-docs;
     in rec {
       devShells.default = npkgs.mkShell {
-        packages = [ dhall dhall-json ];
+        packages = [ dhall dhall-docs ];
+      };
+      checks = {
+        check = npkgs.runCommand "typecheck" {
+          buildInputs = with npkgs; [ dhall ];
+        } ''
+          mkdir $out
+          cd ${./.}
+          REPLICA_DHALL="$PWD/submodules/replica-dhall/package.dhall"\
+          XDG_CACHE_HOME=`mktemp -d` \
+          make check
+          '';
+        doc = npkgs.runCommand "build-doc" {
+          buildInputs = with npkgs; [ dhall-docs ];
+        } ''
+          XDG_DATA_HOME=`mktemp -d` dhall-docs --input ${./.}
+          cp -RL docs $out
+          '';
       };
     }
   );
