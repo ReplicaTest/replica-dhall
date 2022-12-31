@@ -25,7 +25,7 @@
         doc = npkgs.runCommand "build-doc" {
           buildInputs = with npkgs; [ dhall-docs ];
         } ''
-          XDG_DATA_HOME=`mktemp -d` dhall-docs --input ${./.}
+          XDG_DATA_HOME=`mktemp -d` dhall-docs --input ${./Replica}
           cp -RL docs $out
           '';
       };
