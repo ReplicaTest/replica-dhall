@@ -18,7 +18,7 @@
         } ''
           mkdir $out
           cd ${./.}
-          REPLICA_DHALL="$PWD/submodules/replica-dhall/package.dhall"\
+          DHALL_PRELUDE="$PWD/submodules/dhall-lang/Prelude/package.dhall" \
           XDG_CACHE_HOME=`mktemp -d` \
           make check
           '';
