@@ -5,23 +5,31 @@
 
   outputs = { self, nixpkgs, flake-utils }: flake-utils.lib.eachDefaultSystem (system:
     let
-      npkgs = import nixpkgs { inherit system; };
-      inherit (npkgs) dhall;
-      inherit (npkgs) dhall-docs;
+      dhallOverlay = self: super: {
+        replica-dhall = self.callPackage ./replica-dhall.nix { };
+        Prelude = self.callPackage ./Prelude.nix { };
+      };
+      overlay = self: super: {
+        dhallPackages = super.dhallPackages.override (old: {
+          overrides =
+            self.lib.composeExtensions (old.overrides or (_: _: {})) dhallOverlay;
+        });
+      };
+
+      npkgs = import nixpkgs { inherit system; overlays = [ overlay ]; };
+      inherit (npkgs)
+        dhall
+        dhall-docs
+        nix-prefetch-git;
+      inherit (npkgs.haskellPackages)
+        dhall-nixpkgs;
     in rec {
       devShells.default = npkgs.mkShell {
-        packages = [ dhall dhall-docs ];
+        packages = [ dhall dhall-docs dhall-nixpkgs nix-prefetch-git ];
       };
+      packages.default = npkgs.dhallPackages.replica-dhall;
       checks = {
-        check = npkgs.runCommand "typecheck" {
-          buildInputs = with npkgs; [ dhall ];
-        } ''
-          mkdir $out
-          cd ${./.}
-          DHALL_PRELUDE="$PWD/submodules/dhall-lang/Prelude/package.dhall" \
-          XDG_CACHE_HOME=`mktemp -d` \
-          make check
-          '';
+        check = packages.default;
         doc = npkgs.runCommand "build-doc" {
           buildInputs = with npkgs; [ dhall-docs ];
         } ''
