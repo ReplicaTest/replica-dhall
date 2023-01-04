@@ -1,2 +1,1 @@
-{ executable = "${env:IDRIS_HOME} as Text" ? "idris2"
-}
+{ executable = "${env:IDRIS_HOME} as Text" ? "idris2" }

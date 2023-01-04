@@ -3,6 +3,7 @@
   the exit code is zero.
   -}
 let Status = ../Status/package.dhall
-in { Type = ./Type.dhall
-   , default = ./default.dhall // {status = Status.Success}
-   }
+
+in  { Type = ./Type.dhall
+    , default = ./default.dhall // { status = Status.Success }
+    }
