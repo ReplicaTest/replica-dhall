@@ -1,3 +1,1 @@
-{ executable : Text
-, parameters : List Text
-}
+{ executable : Text, parameters : List Text }
