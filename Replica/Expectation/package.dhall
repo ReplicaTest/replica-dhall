@@ -7,4 +7,6 @@
 , Exact = ./Exact.dhall
 , Contains = ./Contains.dhall
 , Consecutive = ./Consecutive.dhall
+, Start = ./Start.dhall
+, End = ./Start.dhall
 }
