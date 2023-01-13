@@ -2,7 +2,7 @@
 PRELUDE_VERSION = v22.0.0
 
 documentation:
-	dhall-docs --input Replica
+	dhall-docs --input .
 
 check:
 	dhall --file ./Replica/package.dhall
