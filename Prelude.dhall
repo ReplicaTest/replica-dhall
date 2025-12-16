@@ -1,4 +1,4 @@
 --| A common entrypoint for Prelude, can be overriden by setting `DHALL_PRELUDE`.
   env:DHALL_PRELUDE
-? https://prelude.dhall-lang.org/v23.0.0/package.dhall
-    sha256:397ef8d5cf55e576eab4359898f61a4e50058982aaace86268c62418d3027871
+? https://prelude.dhall-lang.org/v23.1.0/package.dhall
+    sha256:931cbfae9d746c4611b07633ab1e547637ab4ba138b16bf65ef1b9ad66a60b7f
