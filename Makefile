@@ -1,5 +1,5 @@
 .PHONY: doc check
-PRELUDE_VERSION = v22.0.0
+PRELUDE_VERSION = v23.1.0
 
 documentation:
 	dhall-docs --input .
